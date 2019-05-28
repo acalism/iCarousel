@@ -21,14 +21,14 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        carousel.type = .CoverFlow2
+        carousel.type = .coverFlow2
     }
 
-    func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
+    func numberOfItems(in carousel: iCarousel) -> Int {
         return items.count
     }
 
-    func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
         var label: UILabel
         var itemView: UIImageView
 
@@ -43,12 +43,12 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
             //recycled and used with other index values later
             itemView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
             itemView.image = UIImage(named: "page.png")
-            itemView.contentMode = .Center
+            itemView.contentMode = .center
 
             label = UILabel(frame: itemView.bounds)
-            label.backgroundColor = UIColor.clearColor()
-            label.textAlignment = .Center
-            label.font = label.font.fontWithSize(50)
+            label.backgroundColor = UIColor.clear
+            label.textAlignment = .center
+            label.font = label.font.withSize(50)
             label.tag = 1
             itemView.addSubview(label)
         }
@@ -63,8 +63,8 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         return itemView
     }
 
-    func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if (option == .Spacing) {
+    func carousel(_ carousel: iCarousel, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        if (option == .spacing) {
             return value * 1.1
         }
         return value
